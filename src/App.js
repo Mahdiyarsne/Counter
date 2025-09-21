@@ -1,25 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from 'react';
+import Counter from './components/Counter';
 
-function App() {
+// import './App.css';
+
+import Styles from './App.module.css';
+
+const App = () => {
+  const [count, setCount] = useState(0);
+
+  const increaseCount = () => {
+    setCount(count + 1);
+  };
+
+  const decreaseCount = () => {
+    setCount(count - 1);
+  };
+
+  const restCount = () => {
+    setCount(0);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+    <div className={Styles.App}>
+      <header className={Styles.AppHeader}>
+        <h1>شمارنده من</h1>
       </header>
+      <Counter
+        inc={increaseCount}
+        dec={decreaseCount}
+        rest={restCount}
+        count={count}
+      />
     </div>
   );
-}
+};
 
 export default App;
